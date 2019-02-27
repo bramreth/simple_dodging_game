@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://spawn_projectile.gd" type="Script" id=1]
+[ext_resource path="res://assets/Wooden_UI_png/frame_c_06.png" type="Texture" id=2]
+
+[node name="Node" type="Node"]
+
+script = ExtResource( 1 )
+spawn_timer = 5
+
+[node name="spawn_frame" type="Sprite" parent="." index="0"]
+
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+
+[node name="Timer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 4.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+
