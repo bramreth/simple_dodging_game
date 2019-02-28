@@ -32,7 +32,7 @@ func game_over():
 	$spawnD.disable()
 	$Node/KinematicBody2D.disable()
 	$Sprite/Label.text = "Game over"
-	$NinePatchRect.visible = true
+	$end_game.visible = true
 
 
 func _on_spawnA_request_target():

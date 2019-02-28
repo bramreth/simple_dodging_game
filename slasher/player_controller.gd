@@ -43,4 +43,5 @@ func accelerate(delta):
 
 func take_damage():
 	$AnimationPlayer.play("take_damage")
+	$AudioStreamPlayer2D.play()
 	emit_signal("take_damage")
