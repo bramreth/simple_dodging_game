@@ -1,6 +1,7 @@
 extends Node
 
 var lives = 3
+var score = 0
 
 func _ready():
 	$spawnA.enable()
@@ -17,6 +18,7 @@ func _ready():
 
 func update_labels():
 	$Sprite/Label.text = "lives: " + str(lives)
+	update_score()
 
 func _on_KinematicBody2D_take_damage():
 	lives -= 1
@@ -52,5 +54,14 @@ func _on_spawnD_request_target():
 
 func _on_NinePatchRect_restart():
 	lives = 3
-	$NinePatchRect.visible = false
+	score = 0
+	$end_game.visible = false
 	_ready()
+
+func update_score():
+	$Sprite/score.text = "score: " + str(score)
+
+func _on_Timer_timeout():
+	if not $end_game.visible:
+		score += 1
+		update_score()
