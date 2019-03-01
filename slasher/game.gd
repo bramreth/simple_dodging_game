@@ -4,6 +4,7 @@ var lives = 3
 var score = 0
 
 func _ready():
+	$AudioStreamPlayer2D.play()
 	$spawnA.enable()
 	$spawnB.enable()
 	$spawnC.enable()
@@ -27,7 +28,7 @@ func _on_KinematicBody2D_take_damage():
 		game_over()
 
 func game_over():
-	print("game over!")
+	$AudioStreamPlayer2D.stop()
 	$spawnA.disable()
 	$spawnB.disable()
 	$spawnC.disable()
@@ -65,3 +66,7 @@ func _on_Timer_timeout():
 	if not $end_game.visible:
 		score += 1
 		update_score()
+
+
+func _on_AudioStreamPlayer2D_finished():
+	$AudioStreamPlayer2D.play()
